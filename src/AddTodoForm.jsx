@@ -10,10 +10,14 @@ const AddTodoForm = ({ onAddTodo }) => {
 
   const handleAddTodo = (event) => {
     event.preventDefault();
+    if (!todoTitle.trim()) {
+      alert('Please enter a valid todo title.');
+      return;
+    }
     if (onAddTodo) {
       onAddTodo({
         title: todoTitle,
-        id: Date.now().toString(), // temporary unique ID
+        id: Date.now().toString(),
       });
     }
     setTodoTitle(''); // Reset input
