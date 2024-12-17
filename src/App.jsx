@@ -1,8 +1,8 @@
+import './App.css';
 import { useEffect, useState } from 'react';
-import AddTodoForm from './AddTodoForm';
 import TodoList from './TodoList';
+import AddTodoForm from './AddTodoForm';
 
-// Custom Hook
 function useSemiPersistentState() {
   const [todoList, setTodoList] = useState(() => {
     const saved = localStorage.getItem('savedTodoList');
@@ -23,12 +23,16 @@ function App() {
     setTodoList((prevTodoList) => [...prevTodoList, newTodo]);
   };
 
+  const removeTodo = (id) => {
+    setTodoList((prevList) => prevList.filter((item) => item.id !== id));
+  };
+
   return (
-    <>
+    <div>
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
-      <TodoList todoList={todoList} />
-    </>
+      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+    </div>
   );
 }
 
