@@ -1,24 +1,12 @@
-import { useRef, useEffect } from "react";
-
 const InputWithLabel = ({ label, value, onChange }) => {
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    inputRef.current.focus(); // Focus on the input element
-  }, []);
-
   return (
-    <>
-      <label>{label}</label>
-      <input
-        ref={inputRef}
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-    </>
+    <div>
+      <label>
+        {label}
+        <input type="text" value={value} onChange={onChange} />
+      </label>
+    </div>
   );
 };
 
 export default InputWithLabel;
-

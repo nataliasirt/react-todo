@@ -1,4 +1,4 @@
-import TodoListItem from "./TodoListItem";
+import TodoListItem from './TodoListItem';
 
 function TodoList({ todoList, onRemoveTodo }) {
   return (
@@ -13,4 +13,3 @@ function TodoList({ todoList, onRemoveTodo }) {
 }
 
 export default TodoList;
-
