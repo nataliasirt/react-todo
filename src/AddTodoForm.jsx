@@ -11,7 +11,7 @@ const AddTodoForm = ({ onAddTodo }) => {
   const handleAddTodo = (event) => {
     event.preventDefault();
     if (!todoTitle.trim()) {
-      alert('Please enter a valid todo title.');
+      alert("Please enter a valid todo title.");
       return;
     }
     if (onAddTodo) {
@@ -20,7 +20,7 @@ const AddTodoForm = ({ onAddTodo }) => {
         id: Date.now().toString(),
       });
     }
-    setTodoTitle(''); // Reset input
+    setTodoTitle(""); // Reset input
   };
 
   return (
