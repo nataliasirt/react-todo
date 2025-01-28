@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
+import styles from './App.module.css';
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -89,10 +90,10 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Todo List</h1>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Todo List</h1>
       {isLoading ? (
-        <p>Loading...</p>
+        <p className={styles.loading}>Loading...</p>
       ) : (
         <>
           <AddTodoForm onAddTodo={addTodo} />
