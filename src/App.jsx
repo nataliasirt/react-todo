@@ -1,5 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 import styles from './App.module.css';
@@ -25,14 +26,10 @@ function App() {
       }
 
       const data = await response.json();
-      console.log('Airtable API Response:', data);
-
       const todos = data.records.map((record) => ({
         title: record.fields.title,
         id: record.id,
       }));
-      console.log('Transformed Todos:', todos);
-
       setTodoList(todos);
     } catch (error) {
       console.error('Error fetching todos:', error.message);
@@ -42,8 +39,6 @@ function App() {
   };
 
   const addTodo = async (newTodo) => {
-    console.log('Adding new todo:', newTodo);
-
     const options = {
       method: 'POST',
       headers: {
@@ -66,14 +61,10 @@ function App() {
       }
 
       const data = await response.json();
-      console.log('Response from Airtable POST:', data);
-
       const createdTodo = {
         title: data.fields.title,
         id: data.id,
       };
-      console.log('Created Todo:', createdTodo);
-
       setTodoList((prevTodoList) => [...prevTodoList, createdTodo]);
     } catch (error) {
       console.error('Error adding todo:', error.message);
@@ -81,7 +72,6 @@ function App() {
   };
 
   const removeTodo = (id) => {
-    console.log('Removing todo with id:', id);
     setTodoList((prevList) => prevList.filter((item) => item.id !== id));
   };
 
